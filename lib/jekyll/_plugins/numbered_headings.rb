@@ -15,7 +15,12 @@ Jekyll::Hooks.register [:pages, :posts, :documents], :pre_render do |article|
     (level..max_level).each do |l|
       levels[l] = 0
     end
-    "#{heading} #{levels[level - 1]}. #{text}"
+
+    levels_string = ''
+    (0..(level - 1)).each do |l|
+      levels_string += "#{levels[l]}." if levels[l] > 0
+    end
+    "#{heading} #{levels_string} #{text}"
   end
 
   article.content = converted_lines.join("\n")

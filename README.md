@@ -1,8 +1,10 @@
 # Jekyll::NumberedHeadings
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/jekyll/numbered/headings`. To experiment with that code, run `bin/console` for an interactive prompt.
+Simple jekyll `pre_render` hook to add ordered number to headings.
 
-TODO: Delete this and the text above, and describe your gem
+## Requirement
+
+It's tested only on jekyll 3.3.1.
 
 ## Installation
 
@@ -20,9 +22,43 @@ Or install it yourself as:
 
     $ gem install jekyll-numbered-headings
 
+Then, add to your `_config.yml`:
+
+```yaml
+gems:
+  - jekyll-numbered-headings
+```
 ## Usage
 
-TODO: Write usage instructions here
+You can use following syntax on your [pages](https://jekyllrb.com/docs/pages/), [posts](https://jekyllrb.com/docs/posts/), and [collections](https://jekyllrb.com/docs/collections/).
+
+```markdown
+##1. At first
+
+###1. One thing
+
+###1. Another thing
+
+##1. Second
+
+##1. Third
+```
+
+will be replaced to:
+
+```markdown
+## 1. At first
+
+### 1.1. One thing
+
+### 1.2. Another thing
+
+## 2. Second
+
+## 3. Third
+```
+
+That's it!
 
 ## Development
 
