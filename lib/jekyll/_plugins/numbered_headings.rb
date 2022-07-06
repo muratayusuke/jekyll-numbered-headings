@@ -1,15 +1,23 @@
+NUMBERED_HEADING_REGEX = /^(#+)1\. (.+)/
+HEADING_REGEX = /^(#+) (.+)/
+
 Jekyll::Hooks.register [:pages, :posts, :documents], :pre_render do |article|
   max_level = 6
   levels = Array.new(max_level, 0)
   in_code_block = false
 
-  next unless article.data['numbered-headings'] == true
+  # If "numbered-headings: true" in front matter, number regular headings too.
+  if article.data["numbered-headings"] == true
+    heading_regex = Regexp.union(HEADING_REGEX, NUMBERED_HEADING_REGEX)
+  else
+    heading_regex = NUMBERED_HEADING_REGEX
+  end
 
   converted_lines = article.content.split("\n").map do |line|
     in_code_block = !in_code_block if line.match(/^```/)
     next line if in_code_block
 
-    matched = line.match(/^(#+) (.+)/)
+    matched = line.match(heading_regex)
     next line unless matched
 
     heading = matched[1]
