@@ -3,11 +3,13 @@ Jekyll::Hooks.register [:pages, :posts, :documents], :pre_render do |article|
   levels = Array.new(max_level, 0)
   in_code_block = false
 
+  return unless article.data['numbered-headings'] == true
+
   converted_lines = article.content.split("\n").map do |line|
     in_code_block = !in_code_block if line.match(/^```/)
     next line if in_code_block
 
-    matched = line.match(/^(#+)1\. (.+)/)
+    matched = line.match(/^(#+) (.+)/)
     next line unless matched
 
     heading = matched[1]
