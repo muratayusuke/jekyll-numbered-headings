@@ -58,6 +58,17 @@ will be replaced to:
 ## 3. Third
 ```
 
+***OR***
+
+You can set
+
+```yaml
+numbered-headings: true
+```
+
+in the front matter of any page and then all headings in that page will
+be numbered.
+
 That's it!
 
 ## Development
