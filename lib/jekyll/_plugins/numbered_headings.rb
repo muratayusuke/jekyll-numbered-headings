@@ -5,7 +5,7 @@ MAX_LEVEL = 6
 
 Jekyll::Hooks.register [:pages, :posts, :documents], :pre_render do |article|
   # If "numbered-headings: true" in front matter, number regular headings too.
-  global_page_numbered_headings = article.data.fetch("numbered_headings", false)
+  global_page_numbered_headings = article.data.fetch("numbered-headings", false)
   if global_page_numbered_headings
     heading_regex = Regexp.union(HEADING_REGEX, NUMBERED_HEADING_REGEX)
     min_level = article.data.fetch("numbered-headings-min-level", MIN_LEVEL)
