@@ -12,6 +12,8 @@ Jekyll::Hooks.register [:pages, :posts, :documents], :pre_render do |article|
     max_level = article.data.fetch("numbered-headings-min-level", MAX_LEVEL)
   else
     heading_regex = NUMBERED_HEADING_REGEX
+    min_level = 1
+    max_level = 6
   end
 
   levels = Array.new(max_level, 0)
