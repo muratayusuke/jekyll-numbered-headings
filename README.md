@@ -58,6 +58,21 @@ will be replaced to:
 ## 3. Third
 ```
 
+***OR***
+
+You can set
+
+```yaml
+numbered-headings: true
+```
+
+in the front matter of any page and then all headings in that page will
+be numbered.
+
+If using `numbered-headings: true` in the front matter, you can also set `numbered-headings-min-level` and
+`numbered-headings-max-level` in the front matter to control which levels to include in the numbering. The
+default values are `2` and `6`, respectively.
+
 That's it!
 
 ## Development
